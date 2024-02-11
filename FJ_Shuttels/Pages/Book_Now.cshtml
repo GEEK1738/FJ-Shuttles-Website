@@ -1,0 +1,100 @@
+﻿@page
+@model FJ_Shuttels.Pages.Book_NowModel
+@{
+    ViewData["Title"] = "Book_Now";
+}
+<html>
+<head>
+    <title>Book Your Trip!</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>BOOK YOUR TRIP!</h1>
+        <p>Welcome to FJ Shuttles!</p>
+        <p>Please enter your ride details below.</p>
+
+        <form action="/book" method="post">
+            <div class="form-group">
+                <label for="pick_up_date">Pick-Up Date:</label>
+                <input type="date" name="pick_up_date" id="pick_up_date" required>
+            </div>
+
+            <div class="form-group">
+                <label for="pick_up_time">Pick-Up Time:</label>
+                <input type="time" name="pick_up_time" id="pick_up_time" required>
+            </div>
+
+            <div class="form-group">
+                <label for="pick_up_location">Pick-Up Location:</label>
+                <input type="text" name="pick_up_location" id="pick_up_location" required>
+            </div>
+
+            <div class="form-group">
+                <label for="drop_off_location">Drop-Off Location:</label>
+                <input type="text" name="drop_off_location" id="drop_off_location" required>
+            </div>
+
+            <div class="form-group">
+                <label for="vehicle_type">Choose a Vehicle:</label>
+                <select name="vehicle_type" id="vehicle_type" required>
+                    <option value="sedan"> 15 Seater</option>
+                    <option value="suv">7 Seater</option>
+                    <option value="van">4 Seater</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="vehicle_type">Special request:</label>
+                <select name="vehicle_type" id="vehicle_type" required>
+                    <option value="sedan"> Child seat</option>
+                    <option value="suv">Wheelchair</option>
+                   
+                </select>
+            </div>
+
+
+
+            <body>
+                <form method="post">
+                    <div>
+                        <h2>Distance Calculator</h2>
+                        <label for="txtDistance">Enter Distance (in kilometers): </label>
+                        <input asp-for="Distance" step="0.1" /> <!-- Allow input in decimals -->
+                    </div>
+
+                    <br />
+
+                    <button type="submit">Calculate Cost</button>
+                    <br />
+
+                    <div>
+                        @if (Model.TotalCost.HasValue)
+                        {
+                            <p>The cost for traveling @Model.Distance kilometers is @Model.TotalCost rands.</p>
+                        }
+                        else if (Model.Distance.HasValue)
+                        {
+                            <p>Please enter a valid numeric distance.</p>
+                        }
+                    </div>
+                </form>
+            </body>
+
+
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3308.8202801043735!2d18.599510176471764!3d-33.97145852438467!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1dcc4542f7400bbd%3A0x40487579e3cf5e90!2sCape%20Town%20International%20Airport!5e0!3m2!1sen!2sie!4v1700131238054!5m2!1sen!2sie" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+            <div class="row">
+                <a class="btn btn-primary btn-sm" style="background-color:darkorange" href="/Payment">Make Payment!</a>
+            </div>
+
+            <div class="row">
+                <a class="btn btn-primary btn-sm" style="background-color:darkorange" href="/Successful_Payment">Pay Cash</a>
+            </div>
+            
+        </form>
+
+        <p class="copyright">Copyright &copy; 2023 FJ Shuttles</p>
+    </div>
+</body>
+</html>

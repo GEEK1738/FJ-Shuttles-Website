@@ -1,0 +1,49 @@
+﻿@page
+@model FJ_Shuttels.Pages.SignInModel
+@{
+}
+
+<html>
+<head>
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>SIGN IN</h1>
+        <p>Welcome Onboard!</p>
+        <p>Let's help you find your driver!</p>
+
+        <form action="/signup" method="post">
+
+
+            <input type="email"
+                   name="email"
+                   placeholder="Enter your email">
+
+
+            <input type="password"
+                   name="password"
+                   placeholder="Enter password">
+
+
+            <input type="password"
+                   name="confirm_password"
+                   placeholder="Confirm Password">
+
+
+          
+
+            <div class="row">
+                <a class="btn btn-primary btn-sm" style="background-color:darkorange" href="/Book_Now">Sign In</a>
+            </div>
+
+
+        </form>
+
+        
+
+        <p class="copyright">Copyright &copy; 2023 FJ Shuttles</p>
+    </div>
+</body>
+</html>
